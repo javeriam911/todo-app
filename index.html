@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: rgb(49, 207, 160);
+        }
+    </style>
+</head>
+
+<body>
+    <fieldset>
+        <input type="text" name="" id="inp"> <button onclick=" addItem()"> add item</button><button>delete all</button>
+        <div>
+            <ol id="list"></ol>
+        </div>
+
+    </fieldset>
+
+</body>
+<script>
+    let input = document.getElementById("inp");
+    let list = document.getElementById("list");
+
+    function addItem() {
+        console.log(input.value)
+        let li = document.createElement("li");
+        let li_text = document.createTextNode(input.value);
+        li.appendChild(li_text);
+
+        let edit_btn = document.createElement("button");
+        let btnText = document.createTextNode("edit");
+        edit_btn.setAttribute("onclick", '  editItem(this)')
+        edit_btn.appendChild(btnText)
+        console.log(edit_btn);
+
+
+        li.appendChild(edit_btn)
+        let delete_btn = document.createElement("button");
+        let del_txt = document.createTextNode("delete");
+        delete_btn.setAttribute("onclick", 'deleteItem(this)')
+        delete_btn.appendChild(del_txt)
+
+        li.appendChild(delete_btn)
+        list.appendChild(li);
+
+}
+        function editItem(e) {
+            let newValue = prompt("enter what you have to do",e.parentNode.firstChild.nodeValue);
+         e.parentNode.firstChild.nodeValue = newValue
+
+        }
+
+        function deleteItem(e) {
+          console.log( e.parentNode.remove())
+        }
+    
+</script>
+
+</html>
